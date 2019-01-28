@@ -210,3 +210,18 @@ def detect_video(yolo, video_path, output_path=""):
             break
     yolo.close_session()
 
+def detect_img(yolo):
+    #import cv2
+    try:
+        image = Image.open('dog.jpg')
+    except:
+        print('Open error')
+    else:
+        r_image = yolo.detect_image(image)
+        r_image.show()
+        #cv2.imshow("test", r_image)
+
+    yolo.close_session()
+
+if __name__ == '__main__':
+    detect_img(YOLO())
